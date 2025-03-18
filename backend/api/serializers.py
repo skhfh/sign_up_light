@@ -3,8 +3,6 @@ from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 
-
-
 User = get_user_model()
 
 
@@ -26,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
                                      write_only=True,
                                      validators=[validate_password],
                                      style={"input_type": "password"})
+
     class Meta:
         model = User
         fields = ('email',

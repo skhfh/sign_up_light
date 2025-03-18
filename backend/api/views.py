@@ -9,7 +9,7 @@ User = get_user_model()
 
 
 @api_view(['POST'])
-def sing_up(request):
+def sign_up(request):
     serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()

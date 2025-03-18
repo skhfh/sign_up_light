@@ -1,5 +1,5 @@
 """
-WSGI config for sing_up_light project.
+WSGI config for sign_up_light project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sing_up_light.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sign_up_light.settings')
 
 application = get_wsgi_application()

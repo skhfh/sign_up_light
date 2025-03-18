@@ -12,7 +12,7 @@
     <input type="email" id="email" required>
     <br>
     <label>Имя пользователя:</label>
-    <input type="username" id="username" required>
+    <input type="text" id="username" required>
     <br>
     <label>Пароль:</label>
     <input type="password" id="password" required>
@@ -30,7 +30,7 @@
           const username = document.getElementById('username').value;
           const password = document.getElementById('password').value;
 
-          const response = await fetch('http://127.0.0.1:8000/api/sing-up/', {
+          const response = await fetch('http://127.0.0.1:8000/api/sign-up/', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({ email, username, password })
