@@ -63,8 +63,12 @@ WSGI_APPLICATION = 'sign_up_light.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'django',
+        'USER': 'django',
+        'PASSWORD': 'django_password',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
