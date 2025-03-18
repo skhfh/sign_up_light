@@ -22,23 +22,35 @@
 
   <p id="responseMessage"></p>
 
-  <script>
-      document.getElementById('registerForm').addEventListener('submit', async function(event) {
-          event.preventDefault();
-
-          const email = document.getElementById('email').value;
-          const username = document.getElementById('username').value;
-          const password = document.getElementById('password').value;
-
-          const response = await fetch('http://127.0.0.1:8000/api/sign-up/', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ email, username, password })
-          });
-
-          const data = await response.json();
-          document.getElementById('responseMessage').textContent = data.message;
-      });
-  </script>
 </body>
 </html>
+<script>
+  document.getElementById('registerForm').addEventListener('submit', async function(event) {
+      event.preventDefault();
+
+      const email = document.getElementById('email').value;
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+
+      try {
+           const response = await fetch('http://127.0.0.1:8000/api/sign-up/', {
+               method: 'POST',
+               headers: { 'Content-Type': 'application/json' },
+               body: JSON.stringify({ email, username, password })
+           });
+
+           const data = await response.json();
+
+           if (response.ok) {
+               document.getElementById('responseMessage').textContent = 'Пользователь успешно зарегистрирован!';
+               document.getElementById('responseMessage').style.color = 'green';
+           } else {
+               document.getElementById('responseMessage').textContent = 'Ошибка: ' + JSON.stringify(data);
+               document.getElementById('responseMessage').style.color = 'red';
+           }
+      } catch (error) {
+          document.getElementById('responseMessage').textContent = 'Ошибка соединения с сервером';
+          document.getElementById('responseMessage').style.color = 'red';
+      }
+  });
+</script>
