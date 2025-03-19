@@ -16,12 +16,18 @@ services:
       POSTGRES_PASSWORD: django_password
     volumes:
       - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-U", "myuser"]
+      interval: 5s
+      retries: 5
+      timeout: 3s
 
   backend:
     container_name: backend
     build: ./backend/
     depends_on:
-      - db
+      db:
+        condition: service_healthy
     ports:
       - "8000:8000"
 
